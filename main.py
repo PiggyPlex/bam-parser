@@ -8,7 +8,6 @@ with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, BAM_PATH) as key:
   for i in range(winreg.QueryInfoKey(key)[0]):
     sid = winreg.EnumKey(key, i)
     with winreg.OpenKey(key, sid) as sid_key:
-      # print all values
       for j in range(winreg.QueryInfoKey(sid_key)[1]):
         name, value, _ = winreg.EnumValue(sid_key, j)
         if name == 'SequenceNumber' or name == 'Version':
